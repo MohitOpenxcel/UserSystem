@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="Mohit" id="changelog-1.0">
+        <createTable tableName="employee">
+            <column name="name" type="TEXT">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Mohit">
+        <addColumn tableName="employee">
+            <column name="gender" type="varchar(8)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="3" author="Mohit">
+        <createTable tableName="changeRollback1">
+            <column name="id" type="int"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="changeRollback1"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
